@@ -119,7 +119,6 @@ If I were collaborating with a teammate:
 - Implement a **database (MongoDB/PostgreSQL)** instead of an in-memory array.
 - Add **authentication** (JWT) for managing superhero data securely.
 - Deploy the API using **Docker** and host it on **Heroku/Vercel**.
-- Extend the project with a **React frontend** to interact with the API visually.
 
 ---
 
