@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import debug from "debug";
+import cors from "cors";
 
 import superHeroRoutes from "./routes/superhero_route";
 import {
@@ -21,6 +22,7 @@ const debugLog = debug("app:startup");
 
 //Middlewares
 app.use(express.json()); //body-parser
+app.use(cors());
 
 //Logging for debugging
 if (env === DEV_ENVIRONMENT) {

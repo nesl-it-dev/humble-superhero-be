@@ -20,7 +20,10 @@ export const getAllSuperheroes = (req: Request, res: Response) => {
     }
   });
 
-  res.status(200).json(sortedSuperheroes);
+  res.status(200).json({
+    data: sortedSuperheroes,
+    message: "Superheroes retrieved successfully",
+  });
 };
 
 // Add a new superhero
@@ -35,7 +38,19 @@ export const addSuperhero = (
     return;
   }
 
+  const { order = "desc" } = req.query;
+
+  const sortedSuperheroes = superheroes.sort((a, b) => {
+    if (order === "asc") {
+      return a.humilityScore - b.humilityScore;
+    } else {
+      return b.humilityScore - a.humilityScore;
+    }
+  });
+
   const { name, superpower, humilityScore } = req.body;
   superheroes.push({ name, superpower, humilityScore });
-  res.status(201).json({ message: "Superhero added successfully" });
+  res
+    .status(201)
+    .json({ data: sortedSuperheroes, message: "Superhero added successfully" });
 };
